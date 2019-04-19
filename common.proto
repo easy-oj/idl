@@ -1,0 +1,25 @@
+syntax = "proto3";
+package common;
+option java_package = "ac.eoj.proto.common";
+option java_outer_classname = "Common";
+option go_package = "github.com/easy-oj/common/proto/common";
+
+enum SubmissionStatus {
+    IN_QUEUE = 0;
+    JUDGING = 1;
+    SYSTEM_ERROR = 2;
+	COMPILE_ERROR = 3;
+    FAILURE = 4;
+	ACCEPTED = 5;
+}
+
+enum ExecutionStatus {
+    EXECUTION_ERROR = 0;
+	RUNTIME_ERROR = 1;
+	TIME_LIMIT_EXCEED = 2;
+    MEMORY_LIMIT_EXCEED = 3;
+    ILLEGAL_SYSCALL = 4;
+    WRONG_ANSWER = 5;
+    PRESENTATION_ERROR = 6;
+	EXECUTION_ACCEPTED = 7;
+}

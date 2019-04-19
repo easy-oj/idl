@@ -1,0 +1,31 @@
+syntax = "proto3";
+package oss;
+option java_package = "ac.eoj.proto.oss";
+option java_outer_classname = "OSS";
+option go_package = "github.com/easy-oj/common/proto/oss";
+import "base.proto";
+
+message GetObjectReq {
+	string path = 1;
+	base.BaseReq base_req = 255;
+}
+
+message GetObjectResp {
+    bytes object = 1;
+	base.BaseResp base_resp = 255;
+}
+
+message PutObjectReq {
+	string path = 1;
+	bytes object = 2;
+	base.BaseReq base_req = 255;
+}
+
+message PutObjectResp {
+	base.BaseResp base_resp = 255;
+}
+
+service OSSService {
+	rpc GetObject (GetObjectReq) returns (GetObjectResp);
+	rpc PutObject (PutObjectReq) returns (PutObjectResp);
+}

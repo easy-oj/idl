@@ -1,0 +1,37 @@
+syntax = "proto3";
+package queue;
+option java_package = "ac.eoj.proto.queue";
+option java_outer_classname = "Queue";
+option go_package = "github.com/easy-oj/common/proto/queue";
+import "base.proto";
+
+message Message {
+	int32 uid = 1;
+	int32 pid = 2;
+	int32 lid = 3;
+	int32 sid = 4;
+	map<string, string> content = 5;
+}
+
+message PutMessageReq {
+    Message message = 1;
+	base.BaseReq base_req = 255;
+}
+
+message PutMessageResp {
+	base.BaseResp base_resp = 255;
+}
+
+message GetMessageReq {
+	base.BaseReq base_req = 255;
+}
+
+message GetMessageResp {
+    Message message = 1;
+	base.BaseResp base_resp = 255;
+}
+
+service QueueService {
+	rpc PutMessage (PutMessageReq) returns (PutMessageResp);
+	rpc GetMessage (GetMessageReq) returns (GetMessageResp);
+}

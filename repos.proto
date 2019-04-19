@@ -1,0 +1,46 @@
+syntax = "proto3";
+package repos;
+option java_package = "ac.eoj.proto.repos";
+option java_outer_classname = "Repos";
+option go_package = "github.com/easy-oj/common/proto/repos";
+import "base.proto";
+
+message CreateRepoReq {
+	int32 uid = 1;
+	int32 pid = 2;
+	int32 lid = 3;
+	map<string,string> content = 4;
+	base.BaseReq base_req = 255;
+}
+
+message CreateRepoResp {
+	int32 sid = 1;
+	base.BaseResp base_resp = 255;
+}
+
+message FetchRepoReq {
+	string uuid = 1;
+	base.BaseReq base_req = 255;
+}
+
+message FetchRepoResp {
+	map<string,string> content = 1;
+	base.BaseResp base_resp = 255;
+}
+
+message UpdateRepoReq {
+	string uuid = 1;
+	map<string,string> content = 2;
+	base.BaseReq base_req = 255;
+}
+
+message UpdateRepoResp {
+	int32 sid = 1;
+	base.BaseResp base_resp = 255;
+}
+
+service ReposService {
+	rpc CreateRepo (CreateRepoReq) returns (CreateRepoResp);
+	rpc FetchRepo (FetchRepoReq) returns (FetchRepoResp);
+	rpc UpdateRepo (UpdateRepoReq) returns (UpdateRepoResp);
+}

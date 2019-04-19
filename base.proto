@@ -1,0 +1,13 @@
+syntax = "proto3";
+package base;
+option java_package = "ac.eoj.proto.base";
+option java_outer_classname = "Base";
+option go_package = "github.com/easy-oj/common/proto/base";
+
+message BaseReq {
+	map<string,string> extra = 1;
+}
+
+message BaseResp {
+	map<string,string> extra = 3;
+}
